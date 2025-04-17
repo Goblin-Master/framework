@@ -4,12 +4,6 @@
 package main
 
 import (
-	"ddd/controller"
-	"ddd/infrastructure/ioc"
-	"ddd/repo"
-	"ddd/repo/cache"
-	"ddd/repo/dao"
-	"ddd/service"
 	"github.com/gin-gonic/gin"
 	"github.com/google/wire"
 )
@@ -21,6 +15,8 @@ func InitWeb() (*gin.Engine, error) {
 		ioc.InitMysql,
 		ioc.InitRedis,
 		ioc.InitZap,
+		ioc.InitQiNiuOSS,
+		//UserController
 		//dao
 		dao.NewUserDao,
 		//cache
@@ -31,6 +27,10 @@ func InitWeb() (*gin.Engine, error) {
 		service.NewUserService,
 		//controller
 		controller.NewUserController,
+		//CommonController
+		//oss
+		//controller
+		controller.NewCommonController,
 		//初始化gin
 		ioc.InitMiddlewares, //加载全局中间件
 		ioc.InitGin,

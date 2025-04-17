@@ -8,6 +8,7 @@ type Config struct {
 	App   App   `mapstructure:"app"`
 	DB    DB    `mapstructure:"db"`
 	Redis Redis `mapstructure:"redis"`
+	QiNiu QiNiu `mapstructure:"qiNiu"`
 }
 type App struct {
 	Host string `mapstructure:"host"`
@@ -44,4 +45,16 @@ type Redis struct {
 func (redis *Redis) DSN() string {
 	dsn := fmt.Sprintf("%s:%d", redis.Host, redis.Port)
 	return dsn
+}
+
+type QiNiu struct {
+	Enable    bool   `mapstructure:"enable"`
+	AccessKey string `mapstructure:"accessKey"`
+	Bucket    string `mapstructure:"bucket"`
+	SecretKey string `mapstructure:"secretKey"`
+	Uri       string `mapstructure:"uri"`
+	Region    string `mapstructure:"region"`
+	Prefix    string `mapstructure:"prefix"`
+	Size      int    `mapstructure:"size"`
+	Expiry    int    `mapstructure:"expiry"`
 }
