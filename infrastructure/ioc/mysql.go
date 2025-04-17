@@ -1,7 +1,7 @@
 package ioc
 
 import (
-	"ddd/infrastructure/config"
+	"framework/infrastructure/config"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

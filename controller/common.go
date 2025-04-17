@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"ddd/service/oss"
-	"ddd/service/oss/qiniu"
+	"framework/service/oss"
+	"framework/service/oss/qiniu"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )

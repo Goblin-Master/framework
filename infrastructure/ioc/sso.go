@@ -1,9 +1,9 @@
 package ioc
 
 import (
-	"ddd/infrastructure/config"
-	"ddd/service/oss"
-	"ddd/service/oss/qiniu"
+	"framework/infrastructure/config"
+	"framework/service/oss"
+	"framework/service/oss/qiniu"
 	"github.com/qiniu/go-sdk/v7/storagev2/credentials"
 	"github.com/qiniu/go-sdk/v7/storagev2/http_client"
 	"github.com/qiniu/go-sdk/v7/storagev2/uploader"

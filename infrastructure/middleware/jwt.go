@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"ddd/infrastructure/utils/jwt"
+	"framework/infrastructure/utils/jwt"
 	"github.com/gin-gonic/gin"
 )
 

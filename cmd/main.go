@@ -1,11 +1,14 @@
 package main
 
 import (
-	"ddd/infrastructure/config"
+	"framework/infrastructure/config"
 )
 
 func main() {
 	config.LoadConfig()
-	r, _ := InitWeb()
-	r.Run(config.Conf.App.Link())
+	app, err := InitWeb()
+	if err != nil {
+		panic(err)
+	}
+	app.Run()
 }

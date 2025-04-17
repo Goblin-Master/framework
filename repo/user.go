@@ -2,9 +2,9 @@ package repo
 
 import (
 	"context"
-	"ddd/domain"
-	"ddd/repo/cache"
-	"ddd/repo/dao"
+	"framework/domain"
+	"framework/repo/cache"
+	"framework/repo/dao"
 	"go.uber.org/zap"
 )
 

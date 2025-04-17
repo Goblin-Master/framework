@@ -2,7 +2,7 @@ package cache
 
 import (
 	"context"
-	"ddd/domain"
+	"framework/domain"
 	"github.com/go-redis/redis/v8"
 	"go.uber.org/zap"
 )

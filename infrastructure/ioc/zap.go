@@ -1,7 +1,7 @@
 package ioc
 
 import (
-	"ddd/infrastructure/config"
+	"framework/infrastructure/config"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"

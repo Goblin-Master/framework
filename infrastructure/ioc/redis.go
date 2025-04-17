@@ -2,8 +2,8 @@ package ioc
 
 import (
 	"context"
-	"ddd/infrastructure/config"
 	"fmt"
+	"framework/infrastructure/config"
 	"github.com/go-redis/redis/v8"
 )
 

@@ -2,8 +2,8 @@ package service
 
 import (
 	"context"
-	"ddd/domain"
-	"ddd/repo"
+	"framework/domain"
+	"framework/repo"
 	"go.uber.org/zap"
 )
 

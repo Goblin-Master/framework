@@ -2,8 +2,8 @@ package qiniu
 
 import (
 	"context"
-	"ddd/service/oss"
 	"fmt"
+	"framework/service/oss"
 	"github.com/qiniu/go-sdk/v7/storagev2/uploader"
 	"go.uber.org/zap"
 	"mime/multipart"

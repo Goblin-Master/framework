@@ -4,6 +4,12 @@
 package main
 
 import (
+	"framework/controller"
+	"framework/infrastructure/ioc"
+	"framework/repo"
+	"framework/repo/cache"
+	"framework/repo/dao"
+	"framework/service"
 	"github.com/gin-gonic/gin"
 	"github.com/google/wire"
 )

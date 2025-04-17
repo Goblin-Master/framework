@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"ddd/domain"
-	"ddd/service"
+	"framework/domain"
+	"framework/service"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
