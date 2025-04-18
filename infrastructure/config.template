@@ -16,3 +16,11 @@ redis:
   password:
   db:
   enable: true
+qiNiu:
+  enable:
+  accessKey:
+  bucket:
+  secretKey:
+  url:
+  region:
+  prefix:
