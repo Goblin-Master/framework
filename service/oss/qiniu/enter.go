@@ -12,23 +12,25 @@ import (
 type Service struct {
 	client     *uploader.UploadManager
 	bucketName *string
+	Prefix     *string
 	url        *string
 	zap        *zap.SugaredLogger
 }
 
 var _ oss.Service = (*Service)(nil)
 
-func NewQiNiuOSSService(zap *zap.SugaredLogger, client *uploader.UploadManager, bucketName string, url string) *Service {
+func NewQiNiuOSSService(zap *zap.SugaredLogger, client *uploader.UploadManager, bucketName, prefix, url string) *Service {
 	return &Service{
 		zap:        zap,
 		client:     client,
 		bucketName: &bucketName,
+		Prefix:     &prefix,
 		url:        &url,
 	}
 }
 
 func (s *Service) UploadFile(ctx context.Context, file *multipart.FileHeader) (string, error) {
-	key := fmt.Sprintf("%s/%s", *s.bucketName, file)
+	key := fmt.Sprintf("%s/%s", *s.Prefix, file.Filename)
 	reader, err := file.Open()
 	if err != nil {
 		s.zap.Errorf("open file error:%v", err)
@@ -40,6 +42,9 @@ func (s *Service) UploadFile(ctx context.Context, file *multipart.FileHeader) (s
 		ObjectName: &key,
 		FileName:   file.Filename,
 	}, nil)
-	s.zap.Errorf("upload file error:%v", err)
-	return fmt.Sprintf("%s/%s", *s.url, key), err
+	if err != nil {
+		s.zap.Errorf("upload file error:%v", err)
+		return "", err
+	}
+	return fmt.Sprintf("%s/%s", *s.url, key), nil
 }

@@ -52,9 +52,7 @@ type QiNiu struct {
 	AccessKey string `mapstructure:"accessKey"`
 	Bucket    string `mapstructure:"bucket"`
 	SecretKey string `mapstructure:"secretKey"`
-	Uri       string `mapstructure:"uri"`
+	Url       string `mapstructure:"url"`
 	Region    string `mapstructure:"region"`
 	Prefix    string `mapstructure:"prefix"`
-	Size      int    `mapstructure:"size"`
-	Expiry    int    `mapstructure:"expiry"`
 }

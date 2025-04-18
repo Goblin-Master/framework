@@ -14,12 +14,12 @@ func InitSSOService(zap *zap.SugaredLogger) oss.Service {
 	return InitQiNiuOSS(zap)
 }
 
-func InitQiNiuOSS(zap *zap.SugaredLogger) *qiniu.Service {
+func InitQiNiuOSS(zap *zap.SugaredLogger) oss.Service {
 	mac := credentials.NewCredentials(config.Conf.QiNiu.AccessKey, config.Conf.QiNiu.SecretKey)
 	uploadManager := uploader.NewUploadManager(&uploader.UploadManagerOptions{
 		Options: http_client.Options{
 			Credentials: mac,
 		},
 	})
-	return qiniu.NewQiNiuOSSService(zap, uploadManager, config.Conf.QiNiu.Bucket, config.Conf.QiNiu.Region)
+	return qiniu.NewQiNiuOSSService(zap, uploadManager, config.Conf.QiNiu.Bucket, config.Conf.QiNiu.Prefix, config.Conf.QiNiu.Url)
 }

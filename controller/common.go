@@ -2,7 +2,6 @@ package controller
 
 import (
 	"framework/service/oss"
-	"framework/service/oss/qiniu"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
@@ -12,7 +11,7 @@ type CommonController struct {
 	OSSService oss.Service
 }
 
-func NewCommonController(zap *zap.SugaredLogger, ossService *qiniu.Service) *CommonController {
+func NewCommonController(zap *zap.SugaredLogger, ossService oss.Service) *CommonController {
 	return &CommonController{
 		zap:        zap,
 		OSSService: ossService,

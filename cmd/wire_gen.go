@@ -29,8 +29,8 @@ func InitWeb() (*gin.Engine, error) {
 	userRepo := repo.NewUserRepo(sugaredLogger, userDao, userCache)
 	userService := service.NewUserService(sugaredLogger, userRepo)
 	userController := controller.NewUserController(sugaredLogger, userService)
-	qiniuService := ioc.InitQiNiuOSS(sugaredLogger)
-	commonController := controller.NewCommonController(sugaredLogger, qiniuService)
+	ossService := ioc.InitQiNiuOSS(sugaredLogger)
+	commonController := controller.NewCommonController(sugaredLogger, ossService)
 	engine := ioc.InitGin(v, userController, commonController)
 	return engine, nil
 }
