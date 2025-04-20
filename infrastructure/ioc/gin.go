@@ -14,11 +14,11 @@ import (
 //	@param middlewares
 //	@param userController
 //	@return *gin.Engine
-func InitGin(middlewares []gin.HandlerFunc, userController *controller.UserController, commonController *controller.CommonController) *gin.Engine {
+func InitGin(middlewares []gin.HandlerFunc, userController *controller.UserController, ossController *controller.OSSController) *gin.Engine {
 	r := gin.Default()
 	r.Use(middlewares...)
 	userController.RegisterRouter(r)
-	commonController.RegisterRouter(r)
+	ossController.RegisterRouter(r)
 	return r
 }
 

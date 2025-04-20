@@ -6,23 +6,23 @@ import (
 	"go.uber.org/zap"
 )
 
-type CommonController struct {
+type OSSController struct {
 	zap        *zap.SugaredLogger
 	OSSService oss.Service
 }
 
-func NewCommonController(zap *zap.SugaredLogger, ossService oss.Service) *CommonController {
-	return &CommonController{
+func NewCommonController(zap *zap.SugaredLogger, ossService oss.Service) *OSSController {
+	return &OSSController{
 		zap:        zap,
 		OSSService: ossService,
 	}
 }
-func (cc *CommonController) RegisterRouter(r *gin.Engine) {
-	rg := r.Group("common")
+func (cc *OSSController) RegisterRouter(r *gin.Engine) {
+	rg := r.Group("oss")
 	rg.POST("file", cc.UploadFile)
 }
 
-func (cc *CommonController) UploadFile(c *gin.Context) {
+func (cc *OSSController) UploadFile(c *gin.Context) {
 	cc.zap.Info("upload file")
 	file, err := c.FormFile("file")
 	if err != nil {
