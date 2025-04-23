@@ -11,9 +11,9 @@ import (
 
 type Service struct {
 	client     *uploader.UploadManager
-	bucketName *string
-	Prefix     *string
-	url        *string
+	bucketName string
+	Prefix     string
+	url        string
 	zap        *zap.SugaredLogger
 }
 
@@ -23,14 +23,14 @@ func NewQiNiuOSSService(zap *zap.SugaredLogger, client *uploader.UploadManager, 
 	return &Service{
 		zap:        zap,
 		client:     client,
-		bucketName: &bucketName,
-		Prefix:     &prefix,
-		url:        &url,
+		bucketName: bucketName,
+		Prefix:     prefix,
+		url:        url,
 	}
 }
 
 func (s *Service) UploadFile(ctx context.Context, file *multipart.FileHeader) (string, error) {
-	key := fmt.Sprintf("%s/%s", *s.Prefix, file.Filename)
+	key := fmt.Sprintf("%s/%s", s.Prefix, file.Filename)
 	reader, err := file.Open()
 	if err != nil {
 		s.zap.Errorf("open file error:%v", err)
@@ -38,7 +38,7 @@ func (s *Service) UploadFile(ctx context.Context, file *multipart.FileHeader) (s
 	}
 	defer reader.Close()
 	err = s.client.UploadReader(ctx, reader, &uploader.ObjectOptions{
-		BucketName: *s.bucketName,
+		BucketName: s.bucketName,
 		ObjectName: &key,
 		FileName:   file.Filename,
 	}, nil)
@@ -46,5 +46,5 @@ func (s *Service) UploadFile(ctx context.Context, file *multipart.FileHeader) (s
 		s.zap.Errorf("upload file error:%v", err)
 		return "", err
 	}
-	return fmt.Sprintf("%s/%s", *s.url, key), nil
+	return fmt.Sprintf("%s/%s", s.url, key), nil
 }
