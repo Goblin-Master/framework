@@ -9,6 +9,7 @@ type Config struct {
 	DB    DB    `mapstructure:"db"`
 	Redis Redis `mapstructure:"redis"`
 	QiNiu QiNiu `mapstructure:"qiNiu"`
+	Kafka Kafka `mapstructure:"kafka"`
 }
 type App struct {
 	Host string `mapstructure:"host"`
@@ -55,4 +56,9 @@ type QiNiu struct {
 	Url       string `mapstructure:"url"`
 	Region    string `mapstructure:"region"`
 	Prefix    string `mapstructure:"prefix"`
+}
+
+type Kafka struct {
+	Enable bool     `mapstructure:"enable"`
+	Addrs  []string `mapstructure:"addrs"`
 }

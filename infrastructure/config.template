@@ -24,3 +24,6 @@ qiNiu:
   url:
   region:
   prefix:
+kafka:
+   enable: true
+   -addr:
